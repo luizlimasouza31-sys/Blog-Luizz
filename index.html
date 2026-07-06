@@ -4,31 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORTUNE DOG | Blog da Comunidade</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #ff8c00;
         }
-
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f4f4f4;
             color: #333;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            min-height: 100vh;
+            line-height: 1.6;
         }
 
-        /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
         }
 
         .nav-container {
@@ -41,142 +38,80 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 800;
+            color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #ff8c00;
-        }
-
-        .logo i {
-            color: #ff8c00;
-        }
-
-        .logo span {
-            color: #333;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
+            gap: 12px;
         }
 
         nav a {
+            margin-left: 2rem;
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #ff8c00;
+        nav a:hover { color: var(--primary); }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
         }
 
         .btn-github {
             background: #24292e;
-            color: white !important;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
+            color: white;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .btn-github:hover {
-            background: #333;
-            transform: translateY(-2px);
         }
 
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, #ff8c00, #ff6b00);
+            background: linear-gradient(135deg, #ff8c00, #e65c00);
             color: white;
-            padding: 120px 20px 100px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
+            padding: 140px 20px 100px;
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: #fff;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
 
-        .btn-primary {
-            display: inline-block;
-            background: white;
-            color: #ff8c00;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.4s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-        }
-
-        /* Main Content */
+        /* Posts */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
-            color: #222;
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
         }
 
-        h2 i {
-            margin-right: 12px;
-            color: #ff8c00;
-        }
-
-        /* Blog Grid */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 2rem;
         }
 
@@ -184,157 +119,202 @@
             background: white;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .post-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .post-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: #ff8c00;
-            color: white;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 30px;
             font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .post-badge.destaque {
-            background: #28a745;
+            font-weight: 700;
+            color: white;
         }
 
         .post-content {
-            padding: 2rem;
+            padding: 1.8rem;
         }
 
         .post-content h3 {
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            line-height: 1.3;
+            margin: 0 0 12px 0;
+            font-size: 1.35rem;
         }
 
         .post-meta {
-            color: #666;
+            color: #777;
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
 
-        .post-content p {
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-
         .read-more {
-            color: #ff8c00;
-            text-decoration: none;
+            color: var(--primary);
             font-weight: 600;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: gap 0.3s;
         }
 
-        .read-more:hover {
-            gap: 15px;
+        /* Modal para novo post */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Footer */
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
         footer {
+            text-align: center;
+            padding: 3rem 1rem;
             background: #222;
             color: #aaa;
-            text-align: center;
-            padding: 2.5rem 1rem;
             margin-top: 4rem;
         }
 
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.6rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(255,140,0,0.4);
+            cursor: pointer;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-dog"></i> FORTUNE <span>DOG</span>
+                <i class="fas fa-dog"></i> FORTUNE DOG
             </div>
             <nav>
-                <a href="#home">Início</a>
                 <a href="#posts">Mural</a>
-                <a href="#sobre">Sobre Nós</a>
-                <a href="https://github.com" target="_blank" class="btn-github">
-                    <i class="fab fa-github"></i> Contribuir
+                <a href="#">Eventos</a>
+                <a href="#">Sobre</a>
+                <a href="https://github.com" target="_blank" class="btn btn-github">
+                    <i class="fab fa-github"></i> GitHub
                 </a>
             </nav>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Bem-vindo à Comunidade <span>FORTUNE DOG</span></h1>
-            <p>O espaço oficial da nossa comunidade. Compartilhe ideias, projetos e novidades de forma aberta e colaborativa.</p>
-            <a href="#posts" class="btn-primary">Explorar Posts</a>
-        </div>
+    <section class="hero">
+        <h1>Bem-vindo à Comunidade FORTUNE DOG</h1>
+        <p>Compartilhe ideias, projetos, memes e novidades da nossa comunidade.</p>
+        <button onclick="openModal()" class="btn btn-primary" style="font-size: 1.2rem; padding: 14px 32px;">
+            <i class="fas fa-plus"></i> Publicar algo
+        </button>
     </section>
 
     <main class="container" id="posts">
-        <h2><i class="fas fa-newspaper"></i> Últimas Atualizações</h2>
-        <div class="blog-grid">
-           
-            <article class="post-card">
-                <div class="post-badge">Novidade</div>
-                <div class="post-content">
-                    <h3>Boas-vindas ao Fortune Dog!</h3>
-                    <p class="post-meta">Por: <strong>Admin</strong> | 🗓️ Julho, 2026</p>
-                    <p>Este é o pontapé inicial do nosso blog de comunidade. Qualquer membro pode sugerir alterações e novos textos diretamente pelo GitHub!</p>
-                    <a href="#" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
+        <div class="header-main">
+            <h2><i class="fas fa-newspaper"></i> Últimas Publicações</h2>
+            <button onclick="openModal()" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Novo Post
+            </button>
+        </div>
 
-            <article class="post-card">
-                <div class="post-badge">Tutorial</div>
-                <div class="post-content">
-                    <h3>Como publicar seu texto aqui?</h3>
-                    <p class="post-meta">Por: <strong>DevTeam</strong> | 🗓️ Julho, 2026</p>
-                    <p>Quer que seu artigo apareça no Fortune Dog? É simples! Basta abrir um Pull Request no nosso repositório adicionando seu conteúdo ao arquivo principal.</p>
-                    <a href="#" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-
-            <article class="post-card">
-                <div class="post-badge destaque">Destaque</div>
-                <div class="post-content">
-                    <h3>Próximos passos do nosso projeto</h3>
-                    <p class="post-meta">Por: <strong>Moderação</strong> | 🗓️ Julho, 2026</p>
-                    <p>Estamos organizando os primeiros eventos e votações da comunidade. Fique atento ao nosso mural para não perder nada!</p>
-                    <a href="#" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
+        <div class="blog-grid" id="posts-container">
+            <!-- Posts serão adicionados via JavaScript -->
         </div>
     </main>
 
+    <!-- Modal Novo Post -->
+    <div class="modal" id="postModal">
+        <div class="modal-content">
+            <h3>Novo Post</h3>
+            <div class="form-group">
+                <input type="text" id="postTitle" placeholder="Título do post" required>
+            </div>
+            <div class="form-group">
+                <textarea id="postText" rows="6" placeholder="Escreva sua mensagem..." required></textarea>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button onclick="addPost()" class="btn btn-primary" style="flex: 1;">Publicar</button>
+                <button onclick="closeModal()" class="btn" style="flex: 1; background: #ddd; color: #333;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fab" onclick="openModal()" title="Novo Post">
+        <i class="fas fa-plus"></i>
+    </div>
+
     <footer>
-        <p>&copy; 2026 FORTUNE DOG. Criado colaborativamente via GitHub Pages.</p>
+        <p>&copy; 2026 FORTUNE DOG • Comunidade Colaborativa via GitHub</p>
     </footer>
-</body>
-</html>
+
+    <script>
+        let posts = [
+            {
+                title: "Boas-vindas ao Fortune Dog!",
+                author: "Admin",
+                date: "06 de Julho, 2026",
+                text: "Este é o começo oficial da nossa comunidade. Vamos construir algo grande juntos!",
+                badge: "Novidade"
+            },
+            {
+                title: "Como contribuir com o projeto?",
+                author: "DevTeam",
+                date: "05 de Julho, 2026",
+                text: "Quer ajudar? Abra um Pull Request no GitHub. Toda contribuição é bem-vinda!",
+                badge: "Tutorial"
+            }
+        ];
+
+        function renderPosts() {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = '';
+
+            posts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'post-card';
+                card.innerHTML = `
+                    <div class="post-content" style="position: relative;">
+                        <div class="post-badge" style="background: ${post.badge === 'Novidade' ? '#ff8c00' : '#28a745'};">${post.badge}</div>
+                        <h3>${post.title}</h3>
+                        <p class="post-meta">Por: <strong>${post.author}</strong> | ${post.date}</p>
+                        <p>${post.text}</p>
+                        <a href="#" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                    </
